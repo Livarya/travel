@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Livarya Travel</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            height: 40vh;
+            background-image: url('images/about-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: var(--light-text);
+            margin-bottom: 50px;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(26, 43, 73, 0.9) 30%, rgba(26, 43, 73, 0.5) 100%);
+        }
+        
+        .page-header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-title {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumbs {
+            display: flex;
+            gap: 10px;
+            font-size: 14px;
+        }
+        
+        .breadcrumbs a {
+            color: var(--light-text);
+            opacity: 0.8;
+        }
+        
+        .breadcrumbs a:hover {
+            opacity: 1;
+        }
+        
+        .breadcrumbs .separator {
+            opacity: 0.5;
+        }
+        
+        .about-section {
+            margin-bottom: 60px;
+        }
+        
+        .about-intro {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-subtitle {
+            color: var(--secondary-color);
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .about-title {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .about-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .feature-content h4 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .feature-content p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 5px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            top: 20px;
+            left: 20px;
+            z-index: -1;
+        }
+        
+        .values-section {
+            background-color: var(--light-bg);
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 16px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--secondary-color);
+            font-size: 26px;
+        }
+        
+        .value-title {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .value-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .team-section {
+            margin-bottom: 60px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-image {
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .team-name {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .team-position {
+            font-size: 14px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .team-bio {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .team-social a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .team-social a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .stats-section {
+            background-color: var(--primary-color);
+            padding: 60px 0;
+            margin-bottom: 60px;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .cta-section {
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+            padding: 60px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .cta-title {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .cta-description {
+            font-size: 16px;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .btn-cta-primary {
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-cta-primary:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-cta-secondary {
+            padding: 12px 30px;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-cta-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .about-intro {
+                flex-direction: column;
+            }
+            
+            .about-image::before {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cta-section {
+                padding: 40px 20px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Livarya<span>Travel</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="flights.html">Flights</a></li>
+                    <li><a href="trains.html">Trains</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn-secondary"><i class="fas fa-user"></i> Sign In</a>
+                <a href="register.html" class="btn-primary">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">About Livarya Travel</h1>
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <span class="separator"><i class="fas fa-chevron-right"></i></span>
+                <span>About Us</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="about-section">
+            <div class="about-intro">
+                <div class="about-content">
+                    <div class="about-subtitle">Our Story</div>
+                    <h2 class="about-title">Crafting Luxury Travel Experiences Since 2010</h2>
+                    <p class="about-description">
+                        Livarya Travel was founded with a simple yet powerful vision: to redefine luxury travel by creating 
+                        personalized, immersive experiences that capture the essence of each destination. What began as a boutique agency 
+                        in Jakarta has grown into Indonesia's premier luxury travel company, serving clients from around the world.
+                    </p>
+                    <p class="about-description">
+                        Our team of experienced travel designers works closely with a network of local partners and luxury 
+                        properties to craft journeys that go beyond the ordinary. We believe that true luxury is found in 
+                        the details—the perfect view from your suite, the private guide who reveals hidden gems, or the 
+                        surprise celebration arranged without you asking.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Curated Experiences</h4>
+                                <p>Every itinerary is meticulously crafted with exclusive access and personalized touches.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Personal Service</h4>
+                                <p>Our dedicated concierge team is available 24/7 to ensure your journey exceeds expectations.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Local Expertise</h4>
+                                <p>Our network of local insiders provides authentic perspectives and exclusive access.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Passion for Excellence</h4>
+                                <p>We continuously seek out the exceptional to elevate every aspect of your journey.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/about-main.jpg" alt="Livarya Travel Team">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="values-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide our approach to luxury travel and service excellence</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="value-title">Excellence</h3>
+                    <p class="value-description">
+                        We strive for excellence in every detail, from the moment you begin planning until 
+                        your return home. No request is too small and no dream too big for our team to fulfill.
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="value-title">Sustainability</h3>
+                    <p class="value-description">
+                        We are committed to responsible travel that respects local cultures and preserves natural 
+                        environments for future generations to enjoy. Luxury and sustainability can coexist beautifully.
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="value-title">Innovation</h3>
+                    <p class="value-description">
+                        We continuously explore new destinations, experiences, and technologies to enhance your 
+                        journey and provide access to extraordinary moments that others can't offer.
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="value-title">Relationships</h3>
+                    <p class="value-description">
+                        We value long-term relationships with our clients, partners, and communities. Many of 
+                        our clients have been traveling with us for years, returning for new adventures.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+                <p>The passionate travel experts dedicated to crafting your perfect journey</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/team1.jpg" alt="Anisa Wijaya">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Anisa Wijaya</h3>
+                        <div class="team-position">Founder & CEO</div>
+                        <p class="team-bio">
+                            With over 20 years in luxury hospitality and a passion for discovering hidden gems, 
+                            Anisa founded Livarya Travel to share her vision of truly personalized luxury journeys.
+                        </p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/team2.jpg" alt="Rahmat Hidayat">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Rahmat Hidayat</h3>
+                        <div class="team-position">Lead Travel Designer</div>
+                        <p class="team-bio">
+                            A former luxury hotel manager turned travel designer, Rahmat's extensive network and 
+                            attention to detail ensures each journey includes exclusive experiences and perfect accommodations.
+                        </p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/team3.jpg" alt="Maya Sari">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Maya Sari</h3>
+                        <div class="team-position">Destination Specialist</div>
+                        <p class="team-bio">
+                            With a background in cultural anthropology and a nomadic spirit, Maya has explored 
+                            over 65 countries and specializes in creating culturally immersive experiences.
+                        </p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="images/team4.jpg" alt="Budi Santoso">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Budi Santoso</h3>
+                        <div class="team-position">Client Experience Director</div>
+                        <p class="team-bio">
+                            Budi leads our concierge team with a dedication to flawless service. His experience 
+                            in luxury hospitality ensures that every client receives personalized, attentive care.
+                        </p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">13</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">15,000+</div>
+                    <div class="stat-label">Happy Travelers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">78</div>
+                    <div class="stat-label">Destinations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">24</div>
+                    <div class="stat-label">Industry Awards</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="cta-section">
+            <h2 class="cta-title">Ready to Experience Luxury Travel?</h2>
+            <p class="cta-description">
+                Let us design your perfect journey, tailored to your preferences and desires. 
+                Our travel experts are ready to craft an unforgettable experience just for you.
+            </p>
+            <div class="cta-buttons">
+                <a href="packages.html" class="btn-cta-primary">Explore Our Packages</a>
+                <a href="#" class="btn-cta-secondary">Contact Us</a>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <h2>Livarya<span>Travel</span></h2>
+                    </div>
+                    <p>Premium travel experiences with personalized service for the discerning traveler.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="flights.html">Flights</a></li>
+                        <li><a href="trains.html">Trains</a></li>
+                        <li><a href="hotels.html">Hotels</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Luxury Lane, Jakarta, Indonesia</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+62 123 4567 890</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@livaryatravel.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Livarya Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
